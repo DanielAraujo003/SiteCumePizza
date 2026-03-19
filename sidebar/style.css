@@ -32,7 +32,7 @@
 
 /* item */
 
-.menu li {
+.lista li {
   width: 40px;
   height: 40px;
   display: flex;
@@ -43,7 +43,7 @@
 
 /* ícone */
 
-.menu img {
+.lista img {
   width: 20px;
   opacity: 0.6;
 }

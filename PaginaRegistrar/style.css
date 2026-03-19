@@ -9,7 +9,7 @@
 body {
   height: 100vh;
   font-family: "Nunito", sans-serif;
-  font-weight: 200 italic;
+  font-weight: 200;
 }
 
 .container {
@@ -48,10 +48,10 @@ body {
   font-size: 5rem;
 }
 
-.LdForm {
+.LdForms {
   display: flex;
   flex-direction: center;
-  gap: 15px;
+  gap: 5px;
 }
 
 .LdForms .input {
@@ -65,7 +65,6 @@ body {
   border-inline: 2px solid transparent;
 }
 
-
 .input:focus {
   outline: none;
   border: 2px solid #ff8800;
@@ -73,30 +72,20 @@ body {
 
 /*BOTOES SEPARADOS*/
 .buttons {
-    display: flex;
-    flex-direction: center;
-    gap: 15px;
+  display: flex;
+  gap: 4px;
 }
 
-.buttons .button {
-  flex-direction: row;
-  width: 50%;
+.button {
+  flex: 1;
+  text-align: center;
   font-weight: bold;
   background: #ff8a00;
-  color: white;
+  color: #ffffff;
   padding-block: 15px;
-  margin: 20px auto;
   border-radius: 20px;
   box-shadow: 0 0 5px #ff8800;
   border: none;
   transition: all 0.2s ease-in-out;
-}
-
-#button {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-#es{
   text-decoration: none;
 }
