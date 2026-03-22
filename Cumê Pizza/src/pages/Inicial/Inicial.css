@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  font-family: "Nunito", sans-serif;
+  background-color: #ffffff;
+}
+
+/* CONTAINER */
+.container-inicial {
+  display: flex;
+  height: 100vh;
+}
+
+/* CONTEÚDO PRINCIPAL */
+.Inicial {
+  flex: 1;
+  padding: 20px;
+  margin-left: 70px;
+
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: baseline;
+
+}
+
+/* TEXTOS */
+.Texts {
+  align-self: flex-start;
+}
+
+.Inicial h3 {
+  color: #b9b9b9;
+}
+
+.Inicial h2 {
+  font-size: 2rem;
+  color: #000;
+}
+
+/* PESQUISA */
+.Pesquisa {
+  justify-self: center;
+  position: relative;
+  width: 320px;
+}
+
+.Input {
+  width: 100%;
+  padding: 15px 20px 15px 45px;
+  background: #d7d7d7;
+  border: none;
+  border-radius: 20px;
+  margin-top: 20px;
+  box-shadow: 0 0 5px #ff8800;
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+}
+
+.Lupa {
+  position: absolute;
+  left: 15px;
+  top: 65%;
+  transform: translateY(-50%);
+  width: 18px;
+  opacity: 0.6;
+}
+
+.Input:focus {
+  outline: none;
+  border: 2px solid #ff8800;
+}
+
+/* RESPONSIVO */
+/*@media (max-width: 768px) {
+
+
+  .Inicial {
+    margin-left: 0 !important;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+
+    padding-bottom: 80px;
+  }
+
+  .Pesquisa .Lupa {
+    top: 65% !important;
+    left: 15px;
+  }
+
+  .Pesquisa .Input {
+    padding-left: 45px;
+  }
+
+  .Pesquisa {
+    position: fixed;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 800px;
+    z-index: 1000;
+  }
+} */
+
+@media (max-width: 768px) {
+
+  .Inicial {
+
+    margin-left: 0;
+    padding-bottom: 20px;
+    grid: 2;
+    grid-template-columns: 1fr 1fr 1fr; /* texto + pesquisa */
+
+    gap: 10px;
+  }
+
+  .Texts {
+    grid-column: 1;
+  }
+
+  .Pesquisa {
+
+    position: relative; /* NÃO fixed */
+
+    width: 300px;
+    max-width: 500px;
+
+    justify-self: end;
+  }
+
+}
+

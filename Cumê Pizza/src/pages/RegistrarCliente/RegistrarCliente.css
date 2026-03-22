@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.menu {
+    display: flex;
+    height: 100vh;
+    background-color: #ffffff;
+}
+
+.inicial {
+    flex: 1;
+    flex-direction: column;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    margin-left: 70px;
+    font-family: "Nunito", sans-serif;
+    overflow-y: auto;
+}
+
+.texts {
+    width: 100%;
+    text-align: center;
+}
+
+.texts h2 {
+    font-size: 2rem;
+    color: #000;
+    font-weight: 900;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    max-width: 400px;
+}
+
+.pesquisa {
+    position: relative;
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+    padding: 15px 20px 15px 45px;
+    background: #d7d7d7;
+    border: none;
+    border-radius: 20px;
+    margin-top: 30px;
+    box-shadow: 0 0 5px #ff8800;
+    border-inline: 2px solid transparent;
+    font-family: "Nunito", sans-serif;
+    font-size: 1rem;
+}
+
+.lupa {
+    position: absolute;
+    left: 15px;
+    top: 70%;
+    transform: translateY(-50%);
+    width: 18px;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.input:focus {
+    outline: none;
+    border: 2px solid #ff8800;
+    box-shadow: 0 0 10px rgba(255, 136, 0, 0.5);
+}
+
+.btn-cadastrar {
+    width: 100%;
+    padding: 15px;
+    background: #ff8800;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 40px;
+    transition: all 0.2s ease-in-out;
+    font-family: "Nunito", sans-serif;
+}
+
+.btn-cadastrar:hover {
+    background: #ff7700;
+    transform: scale(1.02);
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .inicial {
+        margin-left: 0;
+        margin-bottom: 65px;
+        gap: 40px;
+        padding: 15px;
+    }
+
+    .texts h2 {
+        font-size: 1.8rem;
+    }
+
+    .formulario {
+        max-width: 70%;
+    }
+
+    .pesquisa {
+        width: 100%;
+    }
+
+    .input {
+        width: 100%;
+        padding: 12px 15px 12px 40px;
+    }
+
+    .lupa {
+        width: 16px;
+    }
+}
