@@ -13,10 +13,10 @@ export default function Sidebar() {
   const [activeLink, setActiveLink] = React.useState('');
 
   const menuItems = [
-    { icon: inicialIcon, alt: 'inicial', path: '/inicial' },
-    { icon: listaPizzaIcon, alt: 'lista', path: '/lista-pizza' },
-    { icon: cadastrarClienteIcon, alt: 'cadastrarCliente', path: '/cadastrar-cliente' },
-    { icon: relatoriosIcon, alt: 'relatorios', path: '/relatorios' },
+    { icon: inicialIcon, alt: 'inicial', path: '/Inicial' },
+    { icon: listaPizzaIcon, alt: 'lista', path: '/ListaPizzas' },
+    { icon: cadastrarClienteIcon, alt: 'cadastrarCliente', path: '/CadastrarCliente' },
+    { icon: relatoriosIcon, alt: 'relatorios', path: '/Relatorios' },
   ];
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function Sidebar() {
   };
 
   const handleLogout = () => {
-    navigate('/');
+    navigate('/Login');
   };
 
   return (

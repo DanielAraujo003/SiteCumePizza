@@ -18,8 +18,8 @@ export default function Login() {
   };
 
   const handleRegistrar = () => {
-    // Redirecionar para página de registro
-    window.location.href = '#';
+
+    navigate('/Registrar');
   };
 
   return (
@@ -34,7 +34,7 @@ export default function Login() {
           type="text"
           className="input"
           id="nome"
-          placeholder="Digite seu nome..."
+          placeholder="Nome de Usuario..."
           value={nome}
           onChange={(e) => setNome(e.target.value)}
         />
@@ -42,7 +42,7 @@ export default function Login() {
           type="password"
           className="input"
           id="senha"
-          placeholder="Digite sua senha..."
+          placeholder="Senha..."
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
         />

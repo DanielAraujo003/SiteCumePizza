@@ -1,0 +1,186 @@
+.Relatorios {
+
+  margin-left: 70px;
+  padding: 30px;
+
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+
+/* HEADER */
+
+.Relatorios-Header h1 {
+
+  font-size: 28px;
+  font-weight: 800;
+  color: #E63946;
+}
+
+.Relatorios-Header p {
+
+  color: #666;
+  margin-bottom: 25px;
+}
+
+
+/* CARDS */
+
+.Relatorios-Cards {
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.Relatorio-Card {
+
+  background-color: white;
+
+  padding: 20px;
+
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+  transition: 0.2s;
+}
+
+.Relatorio-Card:hover {
+
+  transform: translateY(-4px);
+}
+
+
+.Icon {
+
+  background-color: #FFD166;
+
+  width: 50px;
+  height: 50px;
+
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #E63946;
+}
+
+
+.Card-Info h2 {
+
+  font-size: 22px;
+  font-weight: 800;
+
+  color: #333;
+}
+
+.Card-Info p {
+
+  color: #777;
+  font-size: 14px;
+}
+
+
+/* TABELA */
+
+.Relatorios-Tabela {
+
+  background-color: white;
+
+  padding: 20px;
+
+  border-radius: 16px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.Relatorios-Tabela h2 {
+
+  margin-bottom: 15px;
+
+  color: #E63946;
+}
+
+table {
+
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+th {
+
+  text-align: left;
+
+  padding: 12px;
+
+  background-color: #f1f1f1;
+
+  font-weight: 700;
+}
+
+td {
+
+  padding: 12px;
+
+  border-bottom: 1px solid #eee;
+}
+
+
+/* STATUS */
+
+.Status {
+
+  padding: 5px 10px;
+
+  border-radius: 8px;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.entregue {
+
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.preparando {
+
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.cancelado {
+
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+
+/* RESPONSIVO */
+
+@media (max-width: 768px) {
+
+  .Relatorios {
+
+    margin-left: 0;
+    padding: 20px;
+    padding-bottom: 80px;
+  }
+
+  .Relatorios-Cards {
+
+    grid-template-columns: 1fr;
+  }
+
+}
