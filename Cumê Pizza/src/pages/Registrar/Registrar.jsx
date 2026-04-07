@@ -24,7 +24,7 @@ export default function Registro() {
   };
 
   const handleVoltar = () => {
-    navigate('/Login');
+    navigate('/');
   };
 
   return (

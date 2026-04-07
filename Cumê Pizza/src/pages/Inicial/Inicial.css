@@ -1,57 +1,53 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap");
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   height: 100vh;
   font-family: "Nunito", sans-serif;
   background-color: #ffffff;
 }
-
 /* CONTAINER */
 .container-inicial {
   display: flex;
   height: 100vh;
 }
-
 /* CONTEÚDO PRINCIPAL */
 .Inicial {
   flex: 1;
   padding: 20px;
   margin-left: 70px;
-
-
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: baseline;
-
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "texts pesquisa"
+    "relatorios relatorios";
+  align-items: center;
+  gap: 20px;
 }
-
 /* TEXTOS */
 .Texts {
+  grid-area: texts;
   align-self: flex-start;
+  width: 150px;
 }
-
 .Inicial h3 {
   color: #b9b9b9;
 }
-
 .Inicial h2 {
   font-size: 2rem;
   color: #000;
 }
-
 /* PESQUISA */
 .Pesquisa {
+  grid-area: pesquisa;
   justify-self: center;
+  align-self: center;
   position: relative;
-  width: 320px;
+  width: 400px;
 }
-
 .Input {
   width: 100%;
   padding: 15px 20px 15px 45px;
@@ -63,7 +59,6 @@ body {
   font-family: "Nunito", sans-serif;
   font-size: 1rem;
 }
-
 .Lupa {
   position: absolute;
   left: 15px;
@@ -72,70 +67,217 @@ body {
   width: 18px;
   opacity: 0.6;
 }
-
 .Input:focus {
   outline: none;
   border: 2px solid #ff8800;
 }
-
-/* RESPONSIVO */
-/*@media (max-width: 768px) {
-
-
-  .Inicial {
-    margin-left: 0 !important;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-
-    padding-bottom: 80px;
-  }
-
-  .Pesquisa .Lupa {
-    top: 65% !important;
-    left: 15px;
-  }
-
-  .Pesquisa .Input {
-    padding-left: 45px;
-  }
-
-  .Pesquisa {
-    position: fixed;
-    bottom: 70px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 95%;
-    max-width: 800px;
-    z-index: 1000;
-  }
-} */
-
-@media (max-width: 768px) {
-
-  .Inicial {
-
-    margin-left: 0;
-    padding-bottom: 20px;
-    grid: 2;
-    grid-template-columns: 1fr 1fr 1fr; /* texto + pesquisa */
-
-    gap: 10px;
-  }
-
-  .Texts {
-    grid-column: 1;
-  }
-
-  .Pesquisa {
-
-    position: relative; /* NÃO fixed */
-
-    width: 300px;
-    max-width: 500px;
-
-    justify-self: end;
-  }
-
+/* RELATÓRIOS */
+.Relatorios {
+  grid-area: relatorios;
+  padding: 30px;
+  border-radius: 20px;
+  min-height: 100vh;
+}
+/* HEADER */
+.Relatorios-Header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #E63946;
+}
+.Relatorios-Header p {
+  color: #666;
+  margin-bottom: 25px;
+}
+/* CARDS */
+.Relatorios-Cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.Relatorio-Card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: 0.2s;
+}
+.Relatorio-Card:hover {
+  transform: translateY(-4px);
+}
+.Icon {
+  background-color: #FFD166;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #E63946;
+}
+.Card-Info h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #333;
+}
+.Card-Info p {
+  color: #777;
+  font-size: 14px;
+}
+/* TABELA */
+.Relatorios-Tabela {
+  background-color: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.Relatorios-Tabela h2 {
+  margin-bottom: 15px;
+  color: #E63946;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th {
+  text-align: left;
+  padding: 12px;
+  background-color: #f1f1f1;
+  font-weight: 700;
+}
+td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+/* STATUS */
+.Status {
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.entregue {
+  background-color: #d4edda;
+  color: #155724;
+}
+.preparando {
+  background-color: #fff3cd;
+  color: #856404;
+}
+.cancelado {
+  background-color: #f8d7da;
+  color: #721c24;
 }
 
+/* AÇÕES NA TABELA */
+.Acoes-Cell {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.Btn-Cancelar,
+.Btn-Excluir {
+  background: none;
+  border: none;
+  padding: 6px 8px;
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.Btn-Cancelar {
+  color: #ff9800;
+  background-color: rgba(255, 152, 0, 0.1);
+}
+
+.Btn-Cancelar:hover {
+  background-color: rgba(255, 152, 0, 0.2);
+  transform: scale(1.1);
+}
+
+.Btn-Excluir {
+  color: #e63946;
+  background-color: rgba(230, 57, 70, 0.1);
+}
+
+.Btn-Excluir:hover {
+  background-color: rgba(230, 57, 70, 0.2);
+  transform: scale(1.1);
+}
+
+/* BOTÕES DE AÇÃO PRINCIPAIS */
+.Botoes-Acoes {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.Btn-Criar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background-color: #ff8800;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Nunito", sans-serif;
+}
+
+.Btn-Criar:hover {
+  background-color: #e67e00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 136, 0, 0.3);
+}
+
+.Btn-Criar:active {
+  transform: translateY(0);
+}
+
+
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .Relatorios {
+    margin-left: 0;
+    padding: 20px;
+    padding-bottom: 80px;
+  }
+  .Relatorios-Cards {
+    grid-template-columns: 1fr;
+  }
+  .Inicial {
+    margin-left: 0;
+    padding-bottom: 20px;
+    /* ← Removido 'grid: 2;' inválido */
+    grid-template-columns: 1fr;
+    /* ← Alterado para 1fr em mobile */
+    gap: 10px;
+  }
+  .Texts {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .Pesquisa {
+    position: relative;
+    width: 100%; /* ← Melhorado para mobile */
+    max-width: 300px;
+    justify-self: center;
+    grid-row: 1;
+  }
+  /* ... resto permanece igual ... */
+}

@@ -29,7 +29,7 @@ export default function Sidebar() {
   };
 
   const handleLogout = () => {
-    navigate('/Login');
+    navigate('/');
   };
 
   return (

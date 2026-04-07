@@ -1,186 +1,390 @@
-.Relatorios {
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap");
 
-  margin-left: 70px;
-  padding: 30px;
-
-  min-height: 100vh;
-  background-color: #f8f9fa;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: "Nunito", sans-serif;
+  background-color: #f5f5f5;
+}
+
+.PedidosContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
 
 /* HEADER */
-
-.Relatorios-Header h1 {
-
-  font-size: 28px;
-  font-weight: 800;
-  color: #E63946;
+.PedidosHeader {
+  text-align: center;
+  margin-bottom: 40px;
 }
 
-.Relatorios-Header p {
-
-  color: #666;
-  margin-bottom: 25px;
-}
-
-
-/* CARDS */
-
-.Relatorios-Cards {
-
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-
-  gap: 20px;
-  margin-bottom: 30px;
-}
-
-.Relatorio-Card {
-
-  background-color: white;
-
-  padding: 20px;
-
-  border-radius: 16px;
-
-  display: flex;
-  align-items: center;
-  gap: 15px;
-
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-
-  transition: 0.2s;
-}
-
-.Relatorio-Card:hover {
-
-  transform: translateY(-4px);
-}
-
-
-.Icon {
-
-  background-color: #FFD166;
-
-  width: 50px;
-  height: 50px;
-
-  border-radius: 12px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: #E63946;
-}
-
-
-.Card-Info h2 {
-
-  font-size: 22px;
-  font-weight: 800;
-
+.PedidosHeader h1 {
+  font-size: 2.5rem;
   color: #333;
+  margin-bottom: 10px;
+  font-weight: 800;
 }
 
-.Card-Info p {
+.Contador {
+  font-size: 1rem;
+  color: #999;
+  font-weight: 600;
+}
 
-  color: #777;
+/* CARD DO PEDIDO */
+.CardPedidoGrande {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  margin-bottom: 30px;
+  position: relative;
+  animation: slideIn 0.4s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* STATUS BADGE */
+.StatusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 600;
   font-size: 14px;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-
-/* TABELA */
-
-.Relatorios-Tabela {
-
-  background-color: white;
-
-  padding: 20px;
-
-  border-radius: 16px;
-
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.Relatorios-Tabela h2 {
-
-  margin-bottom: 15px;
-
-  color: #E63946;
-}
-
-table {
-
-  width: 100%;
-
-  border-collapse: collapse;
-}
-
-th {
-
-  text-align: left;
-
-  padding: 12px;
-
-  background-color: #f1f1f1;
-
-  font-weight: 700;
-}
-
-td {
-
-  padding: 12px;
-
-  border-bottom: 1px solid #eee;
-}
-
-
-/* STATUS */
-
-.Status {
-
-  padding: 5px 10px;
-
-  border-radius: 8px;
-
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.entregue {
-
-  background-color: #d4edda;
-  color: #155724;
-}
-
-.preparando {
-
+.StatusBadge.andamento {
   background-color: #fff3cd;
   color: #856404;
 }
 
-.cancelado {
-
-  background-color: #f8d7da;
-  color: #721c24;
+.StatusBadge.concluido {
+  background-color: #d4edda;
+  color: #155724;
 }
 
+/* CONTEÚDO DO PEDIDO */
+.PedidoConteudo {
+  margin-bottom: 30px;
+}
 
-/* RESPONSIVO */
+.PedidoConteudo h2 {
+  font-size: 2rem;
+  color: #ff8800;
+  margin-bottom: 25px;
+  font-weight: 800;
+}
 
+.InfoPedido {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.InfoItem {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-left: 4px solid #ff8800;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.InfoItem:hover {
+  background-color: #fff8f0;
+  transform: translateX(8px);
+}
+
+.InfoItem label {
+  display: block;
+  color: #999;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.InfoItem p {
+  font-size: 1.3rem;
+  color: #333;
+  font-weight: 600;
+}
+
+/* BOTÃO DE STATUS */
+.BtnStatus {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Nunito", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+.BtnStatus.andamento {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 2px solid #856404;
+}
+
+.BtnStatus.andamento:hover {
+  background-color: #856404;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(133, 100, 4, 0.3);
+}
+
+.BtnStatus.concluido {
+  background-color: #d4edda;
+  color: #155724;
+  border: 2px solid #155724;
+}
+
+.BtnStatus.concluido:hover {
+  background-color: #155724;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(21, 87, 36, 0.3);
+}
+
+/* NAVEGAÇÃO */
+.Navegacao {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.BtnNavegacao {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: 2px solid #ff8800;
+  background-color: white;
+  color: #ff8800;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Nunito", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.BtnNavegacao:hover:not(:disabled) {
+  background-color: #ff8800;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 136, 0, 0.3);
+}
+
+.BtnNavegacao:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  border-color: #ccc;
+  color: #999;
+}
+
+.BtnNavegacao.anterior {
+  justify-self: start;
+}
+
+.BtnNavegacao.proximo {
+  justify-self: end;
+}
+
+/* BARRA DE PROGRESSO */
+.Progresso {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.BarraProgresso {
+  width: 100%;
+  height: 6px;
+  background-color: #e0e0e0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.BarraPreenchida {
+  height: 100%;
+  background: linear-gradient(90deg, #ff8800, #ff9920);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+/* RESUMO DE STATUS */
+.ResumoStatus {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 25px;
+  background: linear-gradient(135deg, #f9f9f9, #ffffff);
+  border-radius: 16px;
+  border: 2px solid #f0f0f0;
+}
+
+.StatusInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.StatusInfo strong {
+  color: #666;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.StatusInfo span {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ff8800;
+}
+
+/* RESPONSIVIDADE */
 @media (max-width: 768px) {
-
-  .Relatorios {
-
-    margin-left: 0;
-    padding: 20px;
-    padding-bottom: 80px;
+  .PedidosContainer {
+    padding: 20px 15px;
   }
 
-  .Relatorios-Cards {
+  .PedidosHeader h1 {
+    font-size: 1.8rem;
+  }
 
+  .CardPedidoGrande {
+    padding: 25px;
+  }
+
+  .PedidoConteudo h2 {
+    font-size: 1.5rem;
+  }
+
+  .InfoItem {
+    padding: 15px;
+  }
+
+  .InfoItem p {
+    font-size: 1.1rem;
+  }
+
+  .Navegacao {
     grid-template-columns: 1fr;
   }
 
+  .BtnNavegacao {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .BtnNavegacao.anterior,
+  .BtnNavegacao.proximo {
+    justify-self: center;
+  }
+
+  .Progresso {
+    grid-column: 1 / -1;
+    order: 3;
+  }
+
+  .BtnNavegacao.anterior {
+    order: 1;
+  }
+
+  .BtnNavegacao.proximo {
+    order: 2;
+  }
+
+  .ResumoStatus {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .PedidosContainer {
+    padding: 15px 10px;
+  }
+
+  .PedidosHeader h1 {
+    font-size: 1.5rem;
+  }
+
+  .Contador {
+    font-size: 0.9rem;
+  }
+
+  .CardPedidoGrande {
+    padding: 20px;
+  }
+
+  .PedidoConteudo h2 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+
+  .StatusBadge {
+    font-size: 12px;
+  }
+
+  .InfoItem {
+    padding: 12px;
+  }
+
+  .InfoItem label {
+    font-size: 0.75rem;
+  }
+
+  .InfoItem p {
+    font-size: 1rem;
+  }
+
+  .BtnStatus {
+    padding: 14px;
+    font-size: 0.9rem;
+  }
+
+  .BtnNavegacao {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+
+  .StatusInfo span {
+    font-size: 1.5rem;
+  }
 }

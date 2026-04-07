@@ -31,7 +31,7 @@ export default function ListaPizza() {
           {pizzas.map((pizza) => (
             <div key={pizza.id} className="pizza-card">
               <div className="pizza-imagem">
-                <img src="https://via.placeholder.com/200" alt={pizza.nome} />
+                <img src="#" alt={pizza.nome} />
               </div>
               <div className="pizza-info">
                 <h3>{pizza.nome}</h3>

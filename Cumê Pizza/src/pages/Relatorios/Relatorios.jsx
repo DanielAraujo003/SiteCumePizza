@@ -1,124 +1,171 @@
+import React, { useState, useContext } from "react";
+import { PedidosContext } from "../../components/PedidosContext/PedidosContext";
 import "./Relatorios.css";
-import Sidebar from '../../components/Sidebar/Sidebar';
-import { DollarSign, ShoppingBag, Users } from "lucide-react";
+import {ChevronLeft, ChevronRight, CheckCircle, Clock} from "lucide-react";
 
-function Relatorios() {
+export default function Relatorios() {
 
-  const pedidos = [
-    {
-      id: 1,
-      cliente: "João",
-      valor: 45,
-      status: "Entregue"
-    },
-    {
-      id: 2,
-      cliente: "Maria",
-      valor: 62,
-      status: "Preparando"
-    },
-    {
-      id: 3,
-      cliente: "Carlos",
-      valor: 39,
-      status: "Cancelado"
+  const { pedidos, atualizarStatus } = useContext(PedidosContext);
+
+  const todosPedidos = pedidos;
+
+  const [indice, setIndice] = useState(0);
+
+  // segurança caso não exista pedido
+  if (todosPedidos.length === 0) {
+    return <h2>Nenhum pedido encontrado</h2>;
+  }
+
+  const pedidoAtual = todosPedidos[indice];
+
+  const statusAtual = pedidoAtual.status;
+
+  const proximoPedido = () => {
+    if (indice < todosPedidos.length - 1) {
+      setIndice(indice + 1);
     }
-  ];
+  };
+
+  const pedidoAnterior = () => {
+    if (indice > 0) {
+      setIndice(indice - 1);
+    }
+  };
+
   return (
-    <div className="Relatorios">
-      <Sidebar />
+    <div className="PedidosContainer">
 
-      <div className="Relatorios-Header">
-        <h1>Relatórios</h1>
-        <p>Acompanhe o desempenho da pizzaria</p>
+      <div className="PedidosHeader">
+        <h1>Acompanhamento de Pedidos</h1>
+
+        <p className="Contador">
+          Pedido {indice + 1} de {todosPedidos.length}
+        </p>
       </div>
 
-      <div className="Relatorios-Cards">
+      <div className="CardPedidoGrande">
 
-        <div className="Relatorio-Card">
-          <div className="Icon">
-            <DollarSign size={28} />
-          </div>
+        <div className={`StatusBadge ${statusAtual}`}>
 
-          <div className="Card-Info">
-            <h2>R$ 3.250,00</h2>
-            <p>Faturamento Hoje</p>
-          </div>
+          {statusAtual === "andamento" ? (
+            <>
+              <Clock size={20} />
+              Em Andamento
+            </>
+          ) : (
+            <>
+              <CheckCircle size={20} />
+              Concluído
+            </>
+          )}
+
         </div>
 
-        <div className="Relatorio-Card">
-          <div className="Icon">
-            <ShoppingBag size={28} />
+        <div className="PedidoConteudo">
+
+          <h2>Pedido #{pedidoAtual.id}</h2>
+
+          <div className="InfoPedido">
+
+            <div className="InfoItem">
+              <label>👤 Cliente:</label>
+              <p>{pedidoAtual.cliente}</p>
+            </div>
+
+            <div className="InfoItem">
+              <label>🍕 Pizza:</label>
+              <p>{pedidoAtual.pizza}</p>
+            </div>
+
+            <div className="InfoItem">
+              <label>🥤 Bebida:</label>
+              <p>{pedidoAtual.bebida}</p>
+            </div>
+
           </div>
 
-          <div className="Card-Info">
-            <h2>87</h2>
-            <p>Pedidos Hoje</p>
-          </div>
         </div>
 
-        <div className="Relatorio-Card">
-          <div className="Icon">
-            <Users size={28} />
-          </div>
+        <button
+          className={`BtnStatus ${statusAtual}`}
+          onClick={() => atualizarStatus(pedidoAtual.id)}
+        >
 
-          <div className="Card-Info">
-            <h2>42</h2>
-            <p>Clientes Ativos</p>
-          </div>
-        </div>
+          {statusAtual === "andamento"
+            ? "Marcar como Concluído"
+            : "Marcar como Em Andamento"}
+
+        </button>
 
       </div>
 
-      <div className="Relatorios-Tabela">
+      <div className="Navegacao">
 
-        <h2>Últimos Pedidos</h2>
+        <button
+          className="BtnNavegacao anterior"
+          onClick={pedidoAnterior}
+          disabled={indice === 0}
+        >
+          <ChevronLeft size={24} />
+          Anterior
+        </button>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Pedido</th>
-              <th>Cliente</th>
-              <th>Valor</th>
-              <th>Status</th>
-            </tr>
-          </thead>
+        <div className="Progresso">
 
-          <tbody>
-            <tr>
-              <td>#001</td>
-              <td>João</td>
-              <td>R$ 45,00</td>
-              <td className="Status entregue">
-                Entregue
-              </td>
-            </tr>
+          <div className="BarraProgresso">
 
-            <tr>
-              <td>#002</td>
-              <td>Maria</td>
-              <td>R$ 62,00</td>
-              <td className="Status preparando">
-                Preparando
-              </td>
-            </tr>
+            <div
+              className="BarraPreenchida"
+              style={{
+                width: `${((indice + 1) / todosPedidos.length) * 100}%`
+              }}
+            ></div>
 
-            <tr>
-              <td>#003</td>
-              <td>Carlos</td>
-              <td>R$ 39,00</td>
-              <td className="Status cancelado">
-                Cancelado
-              </td>
-            </tr>
-          </tbody>
+          </div>
 
-        </table>
+        </div>
+
+        <button
+          className="BtnNavegacao proximo"
+          onClick={proximoPedido}
+          disabled={indice === todosPedidos.length - 1}
+        >
+          Próximo
+          <ChevronRight size={24} />
+        </button>
+
+      </div>
+
+      <div className="ResumoStatus">
+
+        <div className="StatusInfo">
+          <strong>Em Andamento:</strong>
+
+          <span>
+            {
+              todosPedidos.filter(
+                p => p.status === "andamento"
+              ).length
+            }
+          </span>
+
+        </div>
+
+        <div className="StatusInfo">
+          <strong>Concluídos:</strong>
+
+          <span>
+            {
+              todosPedidos.filter(
+                p => p.status === "concluido"
+              ).length
+            }
+          </span>
+
+        </div>
 
       </div>
 
     </div>
   );
 }
-
-export default Relatorios;
